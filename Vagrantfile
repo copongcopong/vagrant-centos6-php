@@ -19,7 +19,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8000" will access port 80 on the guest machine.
-  config.vm.network :forwarded_port, guest: 80, host: 8000
+  config.vm.network :forwarded_port, guest: 80, host: 8888
   # mailcatcher web
   config.vm.network :forwarded_port, guest: 1080, host: 1080
   # (optional) jenkins
@@ -75,8 +75,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
      # PHP: You can use only one PHP. The default is PHP 5.5 remi
      ## remi
      chef.add_recipe "yum-remi"
-     chef.add_recipe "php55-remi"
-     #chef.add_recipe "php56-remi"
+     #chef.add_recipe "php55-remi"
+     chef.add_recipe "php56-remi"
      #chef.add_recipe "php70-remi"
      chef.add_recipe "phpmyadmin-remi"
      ## ius
@@ -108,12 +108,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #   # You may also specify custom JSON attributes:
      chef.json = {
         "yum" => {
-            "remi-repo" => "remi-php55",
-            #"remi-repo" => "remi-php56",
+            #"remi-repo" => "remi-php55",
+            "remi-repo" => "remi-php56",
             "ius_release" => "1.0-13"
         },
         "php" => {
-            "date.timezone" => "Asia/Tokyo"
+            "date.timezone" => "US/Mountain"
         },
         "mysql" => {
            "server_root_password"   => "root",
